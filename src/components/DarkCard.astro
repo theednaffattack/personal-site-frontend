@@ -1,0 +1,29 @@
+---
+
+const {title, text, uri} = Astro.props;
+---
+  
+<div class="relative text-neutral-100 bg-neutral-900 space-32 radius-large elevation-500" data-animation="fade-in">
+  <a href={uri}><h3>{title}</h3></a>
+  <p class="text-neutral-100">{text}</p>
+</div>
+
+<style>
+
+  .relative {
+    position: relative;
+  }
+  a, a:visited {
+      text-decoration: none;
+      color: inherit;
+    }
+
+  a:focus {
+        text-decoration: underline;
+      }
+  a::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+</style>

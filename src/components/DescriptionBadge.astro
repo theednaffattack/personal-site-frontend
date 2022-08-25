@@ -1,0 +1,21 @@
+---
+
+const {text} = Astro.props;
+---
+<style>
+  .description-badge {
+    display: inline-block;
+    padding: 0.25rem .5rem;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    color: var(--neutral-900);
+    background-color: var(--primary-300);
+    border: 2px solid var(--primary-300);
+    border-radius: 3px;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+</style>
+<span class="description-badge" data-animation="fade-in">
+  <p>{text}</p>
+</span>

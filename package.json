@@ -5,20 +5,23 @@
   "author": "Mark Teekman",
   "homepage": "https://accessible-astro.dev",
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
+    "dev": "astro dev --host",
+    "astart": "astro dev --host",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview --host"
   },
   "dependencies": {
     "accessible-astro-components": "^1.5.4",
     "astro-icon": "^0.7.1"
   },
   "devDependencies": {
+    "@astrojs/image": "^0.3.6",
+    "@astrojs/solid-js": "^1.0.0",
     "astro": "^1.0.0-beta.5",
     "autoprefixer": "^10.4.0",
     "postcss": "8.1.0",
     "sass": "^1.49.9",
+    "solid-js": "^1.4.8",
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "^22.0.0"
   }

@@ -1,12 +1,13 @@
 ---
-import ResponsiveToggle from './ResponsiveToggle.astro'
-import { DarkMode } from 'accessible-astro-components'
+import { DarkMode } from 'accessible-astro-components';
+import ResponsiveToggle from './ResponsiveToggle.astro';
 ---
 
 <div id="main-navigation" class="is-desktop padding-16 color-neutral">
   <div class="container">
     <a href="/">
-      <img src={(await import('../assets/img/logo.svg')).default} alt="Your Logo">
+      <!-- <img src={(await import('../assets/img/logo.svg')).default} alt="Your Logo"> -->
+      <p>eddie naff</p>
     </a>
     <div class="wrapper">
       <nav class="desktop-menu">
@@ -14,8 +15,10 @@ import { DarkMode } from 'accessible-astro-components'
           <slot />
         </ul>
       </nav>
-      <DarkMode client:load />
-      <ResponsiveToggle client:load />
+      <DarkMode />
+
+    <!-- <HeaderMenu client:load /> -->
+      <ResponsiveToggle />
     </div>
     <nav class="mobile-menu">
       <ul>
@@ -29,11 +32,11 @@ import { DarkMode } from 'accessible-astro-components'
   // variables
   const mainNav = document.querySelector('#main-navigation')
   const mainMenu = mainNav.querySelector('ul')
-  const dropdownMenus = [...document.querySelectorAll('.has-dropdown button')]
+  const dropdownMenus = [...document.querySelectorAll<HTMLLIElement>('.has-dropdown button')]
 
 
   // functions
-  const setActiveMenuItem = () => {
+  function setActiveMenuItem () {
     const menuItems = [...mainMenu.querySelectorAll<HTMLAnchorElement>('a:not([rel*="external"])')]
 
     menuItems.forEach(menuItem => {
@@ -44,7 +47,7 @@ import { DarkMode } from 'accessible-astro-components'
     })
   }
 
-  const checkMenuSize = () => {
+  function checkMenuSize () {
     const mainNavWidth = mainNav.getBoundingClientRect().width
     const desktopMenuWidth = document.querySelector('.desktop-menu').getBoundingClientRect().width
     const logoWidthBuffer = 300
@@ -59,12 +62,12 @@ import { DarkMode } from 'accessible-astro-components'
     }
   }
 
-  const isOutOfViewport = element => {
+  function isOutOfViewport (element: HTMLElement) {
     const elementBounds = element.getBoundingClientRect()
     return elementBounds.right > (window.innerWidth || document.documentElement.clientWidth)
   }
 
-  const openDropdownMenu = dropdownMenu => {
+  function openDropdownMenu (dropdownMenu: HTMLElement) {
     const dropdownList = dropdownMenu.parentNode.querySelector('ul')
 
     dropdownMenu.classList.add('show')
@@ -75,12 +78,12 @@ import { DarkMode } from 'accessible-astro-components'
     }
   }
 
-  const closeDropdownMenu = dropdownMenu => {
+  function closeDropdownMenu (dropdownMenu: HTMLElement) {
     dropdownMenu.classList.remove('show')
     dropdownMenu.setAttribute('aria-expanded', 'false')
   }
 
-  const closeAllDropdownMenus = () => {
+  function closeAllDropdownMenus () {
     for (let i = 0; i < dropdownMenus.length; i++) {
       closeDropdownMenu(dropdownMenus[i])
     }
@@ -131,12 +134,12 @@ import { DarkMode } from 'accessible-astro-components'
 
       if (key === 'ArrowDown') {
         event.preventDefault()
-        openDropdownMenu(currentDropdownMenu)
+        openDropdownMenu((currentDropdownMenu as HTMLElement))
         targetItem = firstDropdownItem
       }
 
       if (key === 'Escape') {
-        closeDropdownMenu(currentDropdownMenu)
+        closeDropdownMenu((currentDropdownMenu as HTMLElement))
       }
     }
 
@@ -252,9 +255,9 @@ import { DarkMode } from 'accessible-astro-components'
         display: flex;
         gap: 1.5rem;
 
-        .is-active {
-          font-weight: bold;
-        }
+        // .is-active {
+        //   font-weight: bold;
+        // }
       }
     }
 

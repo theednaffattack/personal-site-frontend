@@ -1,58 +1,112 @@
 ---
+import ContactForm from "../components/ContactForm.astro";
 import DefaultLayout from '../layouts/DefaultLayout.astro'
+import DarkCard from '../components/DarkCard.astro'
+import projects from "../data/projects"
+import { techStack } from "../data/tech-stack"
+import DescriptionBadge from '../components/DescriptionBadge.astro';
 ---
+<style>
+  .flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+  }
+.center-wrap {
+  max-width: 48em;
+  margin: 0 auto;
+}
 
-<DefaultLayout title="Home">
-  <section class="margin-48">
+.quick-border{
+  border: 2px dashed limegreen;
+}
+</style>
+<DefaultLayout title="Eddie Naff">
+  <section id="intro" class="margin-48">
+    <div class="center-wrap">
     <div class="container">
-      <h1>Hi, I'm Eddie</h1><br>
+      <h1>Hi, I'm Eddie</h1>
       <p>Web Developer</p>
     </div>
+  </div>
   </section>
-  <section class="padding-48 color-primary">
+  <section id="projects" class="padding-48 color-primary">
+    
+    <div class="center-wrap quick-border">
     <div class="container">
-      <h2 class="margin-16 bottom">Auto Grid</h2>
+      <h2 class="margin-16 bottom">Projects</h2>
     </div>
-    <div class="container" data-auto-grid="3">
-      <div class="text-neutral-100 bg-neutral-900 space-32 radius-large elevation-500" data-animation="fade-in">
-        <h3>Column 1</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem accusantium placeat eius officiis veniam totam. Earum eos et voluptate dolorem. </p>
-      </div>
-      <div class="text-neutral-100 bg-neutral-900 space-32 radius-large elevation-500" data-animation="fade-in" data-animation-delay="0.25s">
-        <h3>Column 2</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem accusantium placeat eius officiis veniam totam. Earum eos et voluptate dolorem.</p>
-      </div>
-      <div class="text-neutral-100 bg-neutral-900 space-32 radius-large elevation-500" data-animation="fade-in" data-animation-delay="0.5s">
-        <h3>Column 3</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem accusantium placeat eius officiis veniam totam. Earum eos et voluptate dolorem.</p>
-      </div>
-    </div>
-    <div class="container margin-16 top">
-      <a href="#" class="button">Tab to me first!</a>&nbsp;
-      <a href="#" class="button color-secondary">Then it's my turn</a>
+    <ul class="container" data-auto-grid="3">
+        
+      {(projects as any[]).map((project)=>(<li>
+        <DarkCard 
+        id={project.id} 
+        uri={"/projects/" + project.id} 
+        title={project.title}
+        text={project.text}
+         />
+        </li>))}
+      
+    </ul>
     </div>
   </section>
-  <section class="margin-64">
+  <section id="about" class="padding-48">
+
+    <div class="center-wrap">
     <div class="container">
-      <div class="grid">
-        <div class="small-12">
-          <h2>12 Column Grid</h2>
-        </div>
-        <div class="small-12 medium-3 space-content">
-          <h3>Sidebar</h3>
-          <ul>
-            <li>Lorem ipsum dolor sit amet.</li>
-            <li>Lorem ipsum dolor sit amet.</li>
-            <li>Lorem ipsum dolor sit amet.</li>
-            <li>Lorem ipsum dolor sit amet.</li>
-          </ul>
-        </div>
-        <div class="small-12 medium-8 offset-medium-4 space-content">
-          <h3>Main</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi mollitia alias sunt accusamus reiciendis fuga delectus, repellendus molestiae dolore illo iusto eligendi eaque qui hic facilis assumenda! Velit, minus, nobis. <strong><a href="#">And lastely tab to me</a></strong>.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi mollitia alias sunt accusamus reiciendis fuga delectus, repellendus molestiae dolore illo iusto eligendi eaque qui hic facilis assumenda! Velit, minus, nobis.</p>
-        </div>
-      </div>
+    
+      <h2 class="margin-16 bottom">About</h2>
+      
+      <h3 class="margin-16 top">Languages</h3>
+
+    <ul class="flex-container">
+      {(techStack.languages).map((language)=>(<li>
+        <DescriptionBadge text={language} />
+        </li>))}
+    </ul>
+    <h3 class="margin-16 top">Frameworks</h3>
+
+  <ul class="flex-container">
+    {(techStack.frameworks).map((framework)=>(<li>
+      <DescriptionBadge text={framework} />
+      </li>))}
+  </ul>
+    
+      <h3 class="margin-16 top">Tools</h3>
+    <ul class="flex-container">
+        
+      {(techStack.tools).map((tool)=>(<li>
+        <DescriptionBadge text={tool} />
+        </li>))}
+      
+    </ul>
+
+    <h3 class="margin-16 top">Standards and Paradigms</h3>
+    <ul class="flex-container">
+        
+      {(techStack.standardsAndParadigms).map((standard)=>(<li>
+        <DescriptionBadge text={standard} />
+        </li>))}
+      
+    </ul>
+    <h3 class="margin-16 top">Design Tools</h3>
+    <ul class="flex-container">
+        
+      {(techStack.designTools).map((tool)=>(<li>
+        <DescriptionBadge text={tool} />
+        </li>))}
+      
+    </ul>
+    
+    
+    
+  </div> 
+  </div>
+  </section>
+  <section id="contact">
+
+    <div class="center-wrap">
+    <ContactForm />
     </div>
   </section>
 </DefaultLayout>
