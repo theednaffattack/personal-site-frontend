@@ -1,0 +1,57 @@
+---
+import Container from '../Container.astro'
+import settings from '../../config/settings'
+---
+
+<Container>
+  <div class="hero-wrapper flex">
+    <div class="hero-wrapper-inner">
+    <h4 class='hero-intro'>
+      Hi, my name is
+    </h4>
+    <h2 class='hero-name'>
+      Eddie Naff
+    </h2>
+    <p class='hero-paragraph'>
+      I'm a fullstack developer.
+    </p>
+
+    
+  </div>
+  </div>
+  </Container>
+
+<style>
+.hero-wrapper {
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-intro {
+  font-size: clamp(25px, 2vw, 80px);
+  color: var(--theme-accent);
+}
+
+.hero-name {
+  font-size: clamp(40px, 8vw, 80px);
+}
+
+.period {
+  color: hsla(var(--color-orange), 1);
+}
+
+.hero-paragraph {
+  margin-top: 1.5rem;
+}
+
+.button-wrapper {
+  margin-top: 2rem;
+  text-decoration: none;
+}
+
+.btn-inner:hover {
+  text-decoration: none;
+}
+</style>

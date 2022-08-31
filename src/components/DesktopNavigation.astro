@@ -1,0 +1,9 @@
+---
+import {navItems} from "../data/nav-items"
+---
+<nav id="main-navigation">
+  <ul class="nav-menu">
+  {navItems.map((item)=><li class="nav-item"><a class="nav-link" href={item.href}>{item.name}</a></li>)}
+  </ul>
+</nav>
+

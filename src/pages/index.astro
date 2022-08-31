@@ -1,112 +1,88 @@
 ---
+import DesktopNavigation from "../components/DesktopNavigation.astro";
+import { HeaderMenu } from "../components/header-menu";
+import Layout from "../layouts/Layout.astro";
+import { projects as realProjects, placeholderProjects } from "../data/projects";
+import ProjectCard from "../components/ProjectCard.astro";
+import {techStack} from "../data/tech-stack";
+import DescriptionBadge from "../components/DescriptionBadge.astro";
 import ContactForm from "../components/ContactForm.astro";
-import DefaultLayout from '../layouts/DefaultLayout.astro'
-import DarkCard from '../components/DarkCard.astro'
-import projects from "../data/projects"
-import { techStack } from "../data/tech-stack"
-import DescriptionBadge from '../components/DescriptionBadge.astro';
+import {ThemeTogglerBasic} from "../components/theme-toggler-basic";
+
+const projects = [...realProjects, ...placeholderProjects];
 ---
-<style>
-  .flex-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5em;
-  }
-.center-wrap {
-  max-width: 48em;
-  margin: 0 auto;
-}
 
-.quick-border{
-  border: 2px dashed limegreen;
-}
-</style>
-<DefaultLayout title="Eddie Naff">
-  <section id="intro" class="margin-48">
-    <div class="center-wrap">
-    <div class="container">
-      <h1>Hi, I'm Eddie</h1>
-      <p>Web Developer</p>
+<Layout title="Eddie Naff Portfolio">
+  <header>
+
+    <div class="header-inner-wrap">
+    <a href="/">Eddie Naff</a>
+    <DesktopNavigation />
+    <ThemeTogglerBasic client:load />
+    <HeaderMenu client:load />
     </div>
-  </div>
-  </section>
-  <section id="projects" class="padding-48 color-primary">
-    
-    <div class="center-wrap quick-border">
-    <div class="container">
-      <h2 class="margin-16 bottom">Projects</h2>
+  </header>
+	<main>
+    <section id="hero">
+      <div class="section-inner-wrap">
+      <p>Hi My name is</p> <h1>Eddie Naff</h1> <p>I specialize in frontend and backend web development for complex scalable web apps.</p>
     </div>
-    <ul class="container" data-auto-grid="3">
-        
-      {(projects as any[]).map((project)=>(<li>
-        <DarkCard 
-        id={project.id} 
-        uri={"/projects/" + project.id} 
-        title={project.title}
-        text={project.text}
-         />
-        </li>))}
-      
-    </ul>
+    </section>
+    <section id="projects">
+
+      <div class="section-inner-wrap">
+      <p>PROJECTS</p>
+      <ul class="card-list">
+      {projects.map((project)=>{
+        return(<ProjectCard text={project.text} title={project.title} uri={project.uri} />)
+      })}
+      </ul>
+      </div>
+    </section>
+    <section id="about">
+
+      <div class="section-inner-wrap">
+      <p>ABOUT</p>
+      <h3>Languages</h3>
+      <ul class="about-list">
+      {techStack.languages.map((language)=><DescriptionBadge text={language} />)}
+      </ul>
+
+      <h3>Tools</h3>
+      <ul class="about-list">
+        {techStack.tools.map((tool)=><DescriptionBadge text={tool} />)}
+      </ul>
+      <h3>Frameworks</h3>
+      <ul class="about-list">{techStack.frameworks.map((framework)=><DescriptionBadge text={framework} />)}</ul>
+      <h3>Standards and Paradigms</h3>
+      <ul class="about-list">
+        {techStack.standardsAndParadigms.map((para)=><DescriptionBadge text={para} />)}
+      </ul>
+
+      <h3>Other Tools</h3>
+      <ul class="about-list">
+        {techStack.otherTools.map((tool)=><DescriptionBadge text={tool} />)}
+      </ul>
+
+      <h3>Design Tools</h3>
+      <ul class="about-list">
+        {techStack.designTools.map((tool)=><DescriptionBadge text={tool} />)}
+      </ul>
+      </div>
+    </section>
+    <section id="contact">
+
+      <div class="section-inner-wrap">
+      <p>CONTACT</p>
+      <ContactForm />
+      </div>
+    </section>
+  </main>
+  <footer>
+
+    <div class="section-inner-wrap">
+    <p>Made with ❤️ by Eddie Naff</p>
     </div>
-  </section>
-  <section id="about" class="padding-48">
+  </footer>
+</Layout>
 
-    <div class="center-wrap">
-    <div class="container">
-    
-      <h2 class="margin-16 bottom">About</h2>
-      
-      <h3 class="margin-16 top">Languages</h3>
-
-    <ul class="flex-container">
-      {(techStack.languages).map((language)=>(<li>
-        <DescriptionBadge text={language} />
-        </li>))}
-    </ul>
-    <h3 class="margin-16 top">Frameworks</h3>
-
-  <ul class="flex-container">
-    {(techStack.frameworks).map((framework)=>(<li>
-      <DescriptionBadge text={framework} />
-      </li>))}
-  </ul>
-    
-      <h3 class="margin-16 top">Tools</h3>
-    <ul class="flex-container">
-        
-      {(techStack.tools).map((tool)=>(<li>
-        <DescriptionBadge text={tool} />
-        </li>))}
-      
-    </ul>
-
-    <h3 class="margin-16 top">Standards and Paradigms</h3>
-    <ul class="flex-container">
-        
-      {(techStack.standardsAndParadigms).map((standard)=>(<li>
-        <DescriptionBadge text={standard} />
-        </li>))}
-      
-    </ul>
-    <h3 class="margin-16 top">Design Tools</h3>
-    <ul class="flex-container">
-        
-      {(techStack.designTools).map((tool)=>(<li>
-        <DescriptionBadge text={tool} />
-        </li>))}
-      
-    </ul>
-    
-    
-    
-  </div> 
-  </div>
-  </section>
-  <section id="contact">
-
-    <div class="center-wrap">
-    <ContactForm />
-    </div>
-  </section>
-</DefaultLayout>

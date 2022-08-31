@@ -1,5 +1,5 @@
 export const techStack = {
-  languages: ["JavaScript", "TypeScript", "HTML", "CSS"],
+  languages: ["JavaScript", "TypeScript", "HTML", "CSS", "SQL"],
   frameworks: ["NextJS", "React", "SolidJS", "Astro", "Express", "Jest"],
   tools: [
     "NodeJS",

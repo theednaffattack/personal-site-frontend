@@ -2,7 +2,7 @@ import { For, Show, createSignal, onMount } from "solid-js";
 import { navItems } from "../data/nav-items";
 import "../styles/header-menu.css";
 
-export function HeaderMenu() {
+function HeaderMenu() {
   const [isOpen, setIsOpen] = createSignal(false);
 
   function buttonHandler() {
@@ -25,7 +25,7 @@ export function HeaderMenu() {
   }
 
   return (
-    <nav class="mobile-nav-menu" ref={(m) => outsideMenuClick(m)}>
+    <div ref={(m) => outsideMenuClick(m)}>
       <button
         className="menu-icon-wrapper"
         aria-label="Right Align"
@@ -43,7 +43,7 @@ export function HeaderMenu() {
         </svg>
       </button>
       <Show when={isOpen()}>
-        <div className="mobile-nav-content">
+        <div id="myDropdown" className="dropdown-content">
           <For each={navItems}>
             {(item) => (
               <a href={item.href} onClick={buttonHandler}>
@@ -53,6 +53,8 @@ export function HeaderMenu() {
           </For>
         </div>
       </Show>
-    </nav>
+    </div>
   );
 }
+
+export default HeaderMenu;

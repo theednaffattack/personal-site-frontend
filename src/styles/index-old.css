@@ -1,0 +1,138 @@
+/* Global focus outline reset */
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --user-font-scale: 1rem - 16px;
+  --max-width: calc(100% - 1rem);
+}
+
+@media (min-width: 50em) {
+  :root {
+    --max-width: 46em;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :root {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  min-height: 100vh;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-size: clamp(1rem, 0.85rem + 0.375vw + var(--user-font-scale), 1.5rem);
+  line-height: 1.5;
+  max-width: 100vw;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 1rem;
+  font-weight: bold;
+  line-height: 1;
+  text-align: left;
+}
+
+h1,
+h2 {
+  max-width: 40ch;
+}
+
+h2 {
+  font-size: 2.25rem;
+}
+
+a {
+  color: var(--theme-text-accent);
+  text-decoration: none;
+  align-items: center;
+}
+
+a:hover,
+a:focus {
+  text-decoration: underline;
+}
+
+a:focus {
+  outline: 2px solid currentColor;
+  outline-offset: 0.25em;
+}
+
+img {
+  max-width: 100%;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+button {
+  padding: 0.7em 0.9em;
+  border: 0;
+  border-radius: 4px;
+  display: inline-flex;
+  width: auto;
+  background: var(--theme-accent);
+  font-size: 1rem;
+  color: var(--theme-bg);
+  cursor: pointer;
+  transition: background 200ms ease-in-out;
+}
+
+button:focus {
+  outline: var(--theme-button-outline) solid 3px !important;
+  outline-offset: -0.06em;
+  background: var(--theme-button);
+}
+
+/* Screenreader Only Text */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.focus\:not-sr-only:focus,
+.focus\:not-sr-only:focus-visible {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}

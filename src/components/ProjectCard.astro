@@ -1,0 +1,17 @@
+---
+
+const {title, text, uri} = Astro.props;
+---
+  
+<li class="card-item">
+  <a href={uri}><h3>{title}</h3></a>
+  <p class="text-neutral-100">{text}</p>
+</li>
+
+<style>
+  .card-item {
+  border: 2px solid #e7e7e7;
+  border-radius: 4px;
+  padding: .5rem;
+  }
+</style>

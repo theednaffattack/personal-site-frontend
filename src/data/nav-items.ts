@@ -1,11 +1,11 @@
 export const navItems = [
   {
-    name: "About",
-    href: "#about",
+    name: "Blog",
+    href: "/blog",
   },
   {
-    name: "Experience",
-    href: "#experience",
+    name: "About",
+    href: "#about",
   },
   {
     name: "Contact",
