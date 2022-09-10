@@ -14,7 +14,6 @@ const projects = [...realProjects, ...placeholderProjects];
 
 <Layout title="Eddie Naff Portfolio">
   <header>
-
     <div class="header-inner-wrap">
     <a href="/">Eddie Naff</a>
     <DesktopNavigation />
@@ -31,7 +30,7 @@ const projects = [...realProjects, ...placeholderProjects];
     <section id="projects">
 
       <div class="section-inner-wrap">
-      <p>PROJECTS</p>
+      <h2>PROJECTS</h2>
       <ul class="card-list">
       {projects.map((project)=>{
         return(<ProjectCard text={project.text} title={project.title} uri={project.uri} />)
@@ -42,7 +41,7 @@ const projects = [...realProjects, ...placeholderProjects];
     <section id="about">
 
       <div class="section-inner-wrap">
-      <p>ABOUT</p>
+      <h2>ABOUT</h2>
       <h3>Languages</h3>
       <ul class="about-list">
       {techStack.languages.map((language)=><DescriptionBadge text={language} />)}
@@ -73,7 +72,7 @@ const projects = [...realProjects, ...placeholderProjects];
     <section id="contact">
 
       <div class="section-inner-wrap">
-      <p>CONTACT</p>
+      <h2>CONTACT</h2>
       <ContactForm />
       </div>
     </section>

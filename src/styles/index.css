@@ -114,6 +114,8 @@ section {
   margin-right: auto;
   max-width: 45em;
 
+  padding-left: 1em;
+  padding-right: 1em;
   min-height: 4em;
 }
 
@@ -121,6 +123,8 @@ section {
   margin-left: auto;
   margin-right: auto;
   max-width: 45em;
+  padding-left: 1em;
+  padding-right: 1em;
 }
 
 .card-list {
